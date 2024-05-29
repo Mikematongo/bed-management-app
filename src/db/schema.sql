@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS
+AtfesDB;
+
+USE AtfesDB;
+
+CREATE TABLE IF NOT EXISTS Products
+(
+    ProductID INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    QuantityInStock INT DEFAULT 0
+
+);
+
+CREATE TABLE IF NOT EXISTS Sales (
+    SalesID INT AUTO_INCREMENT PRIMARY KEY,
+    ProductID INT,
+    QuantitySold INT,
+    SaleDate DATETIME,
+    TotalAmount DECIMAL(10, 2),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+
+);
